@@ -3,7 +3,7 @@ let list = [7, 13, 9, 8, 4, 1, 2, 16, 0];
 
 for (let i = list.length - 1; i >= 0; i--) {
     for (let j = 0; j <= i - 1; j++) {
-        if (list[j] > list[j + 1] > 0) {
+        if (list[j] > list[j + 1]) {
             let temp = list[j];
             list[j] = list[j+1];
             list[j+1] = temp;
@@ -13,20 +13,22 @@ for (let i = list.length - 1; i >= 0; i--) {
 console.log(list.toString()); // => 0,1,2,4,7,8,9,13,16
 
 
-let targetVal = 1; // Change if you want
+let targetVal = 3; // Change if you want
+let position = -1;
 
 let left = 0;
 let right = list.length - 1;
 
 while (left <= right) {
-    let mid = (left + right) / 2
+    let mid = Math.floor((left + right) / 2);
 
     if (list[mid] == targetVal) {
-        console.log(mid);
+        position = mid;
+        break;
     } else if (list[mid] < targetVal) {
         left = mid + 1;
     } else {
         right = mid -1;
     }
 }
-console.log(-1)
+console.log(position)
